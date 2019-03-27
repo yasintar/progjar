@@ -24,9 +24,8 @@ def menerima():
             print "blok ", len(data), data[0:10]
 
 
-if __name__ == "__main__":
-    while True:
-        data, addr = sock.recvfrom(1024)
-        if(data=="kirim"):
-            menerima()
-            break
+while True:
+    data, addr = sock.recvfrom(1024)
+    if(data=="kirim"):
+        menerima()
+        break
