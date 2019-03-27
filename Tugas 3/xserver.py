@@ -11,7 +11,6 @@ def Process(name, sock):
         filelist = os.listdir(filename[5:])
         print filelist
         sock.send(str(filelist))
-
     elif os.path.isfile(filename):
         sock.send("EXISTS " + str(os.path.getsize(filename)))
         userResponse = sock.recv(1024)
@@ -24,8 +23,6 @@ def Process(name, sock):
                     sock.send(totalBytes)
         else:
             sock.send("Error.")
-
-
     else:
         print "Error."
 
@@ -38,7 +35,6 @@ def Main():
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((host, port))
-
     s.listen(5)
 
     print "Server is ready."
