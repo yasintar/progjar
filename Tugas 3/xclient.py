@@ -12,11 +12,10 @@ def Main():
         s.send(filename)
         inputFile = s.recv(1024)
         print "directory: " + str(inputFile)
-
     else:
         s.send(filename)
-    data = s.recv(1024)
-    if data[:6] == 'EXISTS':
+        data = s.recv(1024)
+        if data[:6] == 'EXISTS':
         filesize = long(data[6:])
         notif = raw_input("File exists, " + str(filesize) + " Bytes, Download? (Y/N) -> ")
         if notif == 'Y':
