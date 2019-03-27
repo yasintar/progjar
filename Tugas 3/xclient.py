@@ -8,13 +8,13 @@ def Main():
     s.connect((host, port))
 
     filename = raw_input("Input File? -> ")
-    if filename[:4] == 'list':
+    if filename[:4] == 'view':
         s.send(filename)
         inputFile = s.recv(1024)
         print "directory: " + str(inputFile)
 
     else:
-    s.send(filename)
+        s.send(filename)
     data = s.recv(1024)
     if data[:6] == 'EXISTS':
         filesize = long(data[6:])
@@ -30,7 +30,7 @@ def Main():
                 data = s.recv(1024)
                 totalRecv += len(data)
                 f.write(data)
-                print "{0:.2f}".format((totalRecv / float(filesize)) * 100) + "% Done"
+                print "{0:.2f}".format((totalRecv / float(filesize)) * 100) + "%"
 
             print "Completed!"
             f.close()

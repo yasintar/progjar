@@ -5,14 +5,14 @@ import os
 def Process(name, sock):
     filename = sock.recv(1024)
 
-    if filename[:4] == 'list': 
+    if filename[:4] == 'view':
         print "directory list"
         print "path: " + filename[5:]
         filelist = os.listdir(filename[5:])
         print filelist
         sock.send(str(filelist))
 
-    elif os.path.isfile(filename):  
+    elif os.path.isfile(filename):
         sock.send("EXISTS " + str(os.path.getsize(filename)))
         userResponse = sock.recv(1024)
         if userResponse[:2] == 'OK':
