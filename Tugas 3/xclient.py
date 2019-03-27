@@ -14,7 +14,7 @@ def Main():
         print "directory: " + str(inputFile)
 
     else:
-        s.send(filename)
+    s.send(filename)
     data = s.recv(1024)
     if data[:6] == 'EXISTS':
         filesize = long(data[6:])
