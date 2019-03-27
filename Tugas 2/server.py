@@ -26,12 +26,12 @@ def mengirim(CLIENT_IP, CLIENT_PORT):
         fp.close()
     sock.sendto("berhenti", (addr))
 
-if __name__ == "__main__":
-	while True:
-		print "Terkoneksi"
-		data, addr = sock.recvfrom(1024)
-		if (data == "ok"):
-			thread = Thread(target=mengirim, args=(addr))
-			thread.start()
+
+while True:
+	print "Terkoneksi"
+	data, addr = sock.recvfrom(1024)
+	if (data == "ok"):
+		thread = Thread(target=mengirim, args=(addr))
+		thread.start()
 
 
